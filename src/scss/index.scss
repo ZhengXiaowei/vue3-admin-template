@@ -1,0 +1,80 @@
+// @import "./common.scss";
+@import "./transition.scss";
+@import "./antd.scss";
+// @import "./components/index.scss";
+// @import "./views/index.scss";
+
+body {
+  min-width: 1300px;
+  overflow-x: auto;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.web-wrapper {
+  height: 100vh;
+
+  .web-menu {
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .web-header {
+    position: relative;
+
+    .web-title {
+      font-size: 32px;
+      color: #fff;
+      display: inline-block;
+    }
+
+    .user-wrap {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translate(0, -50%);
+      color: #fff;
+      font-size: $font-size-bigger;
+      cursor: pointer;
+      @include flex();
+
+      .user {
+        margin: 0 10px;
+        line-height: 1.8;
+      }
+    }
+  }
+
+  .web-container {
+    padding: 23px;
+  }
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.page-wrap {
+  padding: 23px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.theme {
+  color: $theme-color;
+}
