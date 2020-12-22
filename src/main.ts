@@ -7,9 +7,13 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-import install from "@/plugins/install";
+import { install, createGlobalData } from "@/plugins";
 
-const app = install(createApp(App));
+const app = createApp(App);
+
+// 初始化三方库和插件
+install(app);
+createGlobalData(app);
 
 app.use(store).use(router);
 

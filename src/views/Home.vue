@@ -1,50 +1,70 @@
 <template>
-  <div class="home">
-    <p>Home Page</p>
-    <div>
-      <a-input placeholder="请输入待复制的内容"
-               v-model:value="copyText"
-               style="width: 200px" />
-      <a-button type="primary"
-                @click="onCopy">点我复制</a-button>
-    </div>
-    <div>
-      <a-button type="primary"
-                @click="onCreateQrCode">生成二维码</a-button>
-      <div v-qrcode="qrText"></div>
+  <div class="page-home">
+    <h2>已有功能</h2>
+    <div class="features-list">
+      <ul>
+        <li v-for="feat in features"
+            :key="feat.value"
+            @click="onRouteChange(feat.value)">{{ feat.label }}</li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
-import useQRCode from "@/hooks/useQRCode";
+import useApp from "@/hooks/useApp";
 
 const Home = defineComponent({
   name: "Home",
-  components: {
-    HelloWorld,
-  },
   setup() {
-    let copyText = ref("");
-    let qrText = ref("");
+    const { router } = useApp();
+    let features = ref([
+      {
+        label: "复制",
+        value: "copy",
+      },
+      {
+        label: "二维码生成",
+        value: "qrcode",
+      },
+      {
+        label: "拖拽排序",
+        value: "drag",
+      },
+      {
+        label: "滑块验证码",
+        value: "verify",
+      },
+    ]);
 
-    const onCreateQrCode = () => {
-      qrText.value = Math.random().toString();
+    const onRouteChange = (path: string) => {
+      router.push(`/feature/${path}`);
     };
 
-    return { copyText, qrText, onCreateQrCode };
-  },
-  methods: {
-    onCopy() {
-      if (this.copyText) return this.$message.warn("不输点什么，怎么复制");
-      this.$copyText(this.copyText).then((_) => {
-        this.$message.success("复制成功");
-      });
-    },
+    return {
+      features,
+      onRouteChange,
+    };
   },
 });
 
 export default Home;
 </script>
+
+<style lang="scss" scoped>
+.page-home {
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    list-style: none;
+    font-size: 16px;
+    color: $theme-color;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+}
+</style>

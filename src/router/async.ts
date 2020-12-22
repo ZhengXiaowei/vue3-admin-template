@@ -1,4 +1,10 @@
 import { RouteConfig } from "@/types/route";
+import {
+  FeatureCopy,
+  FeatureDrag,
+  FeatureQrCode,
+  FeatureVerify,
+} from "./children";
 
 export const Home: RouteConfig = {
   name: "Home",
@@ -18,6 +24,16 @@ export const About: RouteConfig = {
   component: () => import("@/views/About.vue"),
 };
 
-const asyncRoutes: RouteConfig[] = [Home, About];
+export const Feature: RouteConfig = {
+  name: "Feature",
+  path: "/feature",
+  meta: {
+    title: "Feature",
+  },
+  children: [FeatureCopy, FeatureQrCode, FeatureDrag, FeatureVerify],
+  component: () => import("@/views/feature/index.vue"),
+};
+
+const asyncRoutes: RouteConfig[] = [Home, Feature, About];
 
 export default asyncRoutes;
