@@ -35,3 +35,12 @@ export const FeatureVerify: RouteConfig = {
   },
   component: () => import("@/views/feature/verify.vue"),
 };
+
+export const Functional: RouteConfig = {
+  name: "Functional",
+  path: "functional",
+  meta: {
+    title: "函数式组件",
+  },
+  component: () => import("@/views/feature/functional.vue"),
+};

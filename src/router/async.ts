@@ -4,6 +4,7 @@ import {
   FeatureDrag,
   FeatureQrCode,
   FeatureVerify,
+  Functional,
 } from "./children";
 
 export const Home: RouteConfig = {
@@ -30,7 +31,13 @@ export const Feature: RouteConfig = {
   meta: {
     title: "Feature",
   },
-  children: [FeatureCopy, FeatureQrCode, FeatureDrag, FeatureVerify],
+  children: [
+    FeatureCopy,
+    FeatureQrCode,
+    FeatureDrag,
+    FeatureVerify,
+    Functional,
+  ],
   component: () => import("@/views/feature/index.vue"),
 };
 
