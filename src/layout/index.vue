@@ -47,7 +47,7 @@
 import { computed, defineComponent, reactive, ref, toRefs } from "vue";
 
 import appHeader from "./components/AppHeader.vue";
-import appSubMenu from "./components/AppSubMenu.vue";
+import appSubMenu from "./components/AppSubMenu";
 
 import useApp from "@/hooks/useApp";
 import { pathResolve } from "@/helper/index";
